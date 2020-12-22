@@ -1,0 +1,58 @@
+<%= form_with(model: property, local: true) do |form| %>
+  <% if property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+      <% property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :property %>
+    <%= form.text_field :property %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rent %>
+    <%= form.number_field :rent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age, "Building age"%>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remarks %>
+    <%= form.text_area :remarks %>
+  </div>
+
+  <%= form.fields_for :stations do |s| %>
+    <h3>Name of railway <%= s.index+1 %></h3>
+    <div class="field">
+      <%= s.label :railway %>
+      <%= s.text_field :railway %>
+    </div>
+    <div class="field">
+      <%= s.label :station_name %>
+      <%= s.text_field :station_name %>
+    </div>
+    <div class="field">
+      <%= s.label :distance %>
+      <%= s.number_field :distance %> mns walk
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
