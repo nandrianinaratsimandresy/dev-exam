@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  railway: MyString
+  station_name: MyString
+  distance: MyString
+  property: one
+
+two:
+  railway: MyString
+  station_name: MyString
+  distance: MyString
+  property: two

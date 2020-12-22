@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @property.property %>
+</p>
+
+<p>
+  <strong>Rent:</strong>
+  <%= @property.rent %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @property.address %>
+</p>
+
+<p>
+  <strong>Building Age:</strong>
+  <%= @property.age %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @property.remarks %>
+</p>
+<hr>
+<h2>Nearest stations:</h2>
+<% @property.stations.where.not(distance: [nil]).order(distance: :asc).each do |s| %>
+  <strong>Railway line: </strong><%= s.railway %></br>
+  <strong>Station name: </strong><%= s.station_name %></br>
+  <strong>Minutes walk: </strong><%= s.distance %></br>
+  <br>
+<% end %>
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
